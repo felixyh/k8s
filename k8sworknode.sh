@@ -49,4 +49,35 @@ apt-get update
 apt-get install -y kubeadm kubelet kubernetes-cni
 systemctl enable kubelet
 swapoff -a
+
+# prepare the images accordingly, as from worknode to join master, also needs two images at least: pause and kube-proxy
+docker pull louwy001/kube-apiserver:v1.21.0 && \
+docker pull louwy001/kube-controller-manager:v1.21.0 && \
+docker pull louwy001/kube-scheduler:v1.21.0 && \
+docker pull louwy001/kube-proxy:v1.21.0 && \
+docker pull louwy001/pause:3.4.1 && \
+docker pull louwy001/etcd:3.4.13-0 && \
+docker pull louwy001/coredns-coredns:v1.8.0 && \
+
+docker tag louwy001/kube-apiserver:v1.21.0 k8s.gcr.io/kube-apiserver:v1.21.0 && \
+docker tag louwy001/kube-controller-manager:v1.21.0 k8s.gcr.io/kube-controller-manager:v1.21.0 && \
+docker tag louwy001/kube-scheduler:v1.21.0 k8s.gcr.io/kube-scheduler:v1.21.0 && \
+docker tag louwy001/kube-proxy:v1.21.0 k8s.gcr.io/kube-proxy:v1.21.0 && \
+docker tag louwy001/pause:3.4.1 k8s.gcr.io/pause:3.4.1 && \
+docker tag louwy001/etcd:3.4.13-0 k8s.gcr.io/etcd:3.4.13-0 && \
+docker tag louwy001/coredns-coredns:v1.8.0 k8s.gcr.io/coredns/coredns:v1.8.0 && \
+
+
+docker rmi louwy001/kube-apiserver:v1.21.0 && \
+docker rmi louwy001/kube-controller-manager:v1.21.0 && \
+docker rmi louwy001/kube-scheduler:v1.21.0 && \
+docker rmi louwy001/kube-proxy:v1.21.0 && \
+docker rmi louwy001/pause:3.4.1 && \
+docker rmi louwy001/etcd:3.4.13-0 && \
+docker rmi louwy001/coredns-coredns:v1.8.0 && \
+
+docker images
+
+
+
 echo 'Enter kubeadm join command'
