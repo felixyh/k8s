@@ -25,6 +25,7 @@ docker run hello-world
 #enable and modify firewall
 echo "y" | sudo ufw enable
 
+ufw allow 22/tcp
 ufw allow 6443/tcp
 ufw allow 2379:2380/tcp
 ufw allow 10250/tcp
