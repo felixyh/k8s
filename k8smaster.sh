@@ -104,6 +104,6 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 
 
 #install helm
-# curl -O https://get.helm.sh/helm-v3.0.1-linux-amd64.tar.gz
-# tar -zxvf helm-v3.0.1-linux-amd64.tar.gz
-# mv linux-amd64/helm /usr/bin/
+curl -x 10.64.1.81:8080 -O https://get.helm.sh/helm-v3.0.1-linux-amd64.tar.gz
+tar -zxvf helm-v3.0.1-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/bin/
