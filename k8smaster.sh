@@ -46,7 +46,7 @@ deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 EOF
 
 apt-get update
-apt-get install -y kubeadm kubelet kubernetes-cni
+apt-get install -y kubeadm=1.21.0* kubelet=1.21.0* kubernetes-cni
 systemctl enable kubelet
 #https://github.com/kidlj/kube/blob/master/README.md
 swapoff -a
