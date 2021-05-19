@@ -85,8 +85,8 @@ docker rmi louwy001/coredns-coredns:v1.8.0 && \
 
 docker images
 
-#initialize cluster
-kubeadm init --pod-network-cidr=10.244.0.0/16
+#initialize cluster with dedicated kubernetes version: v1.21.0
+kubeadm init --kubernetes-version=v1.21.0 --pod-network-cidr=10.244.0.0/16
 
 #configure kubectl
 mkdir -p $HOME/.kube
