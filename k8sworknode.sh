@@ -23,7 +23,7 @@ systemctl restart docker.service
 docker run hello-world
 
 #enable and modify firewall
-ufw enable
+echo "y" | sudo ufw enable
 
 ufw allow 6443/tcp
 ufw allow 2379:2380/tcp
